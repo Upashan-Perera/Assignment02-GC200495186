@@ -18,7 +18,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        APIUtility.getCryptoFromCoinGecko("bit");
+        APIUtility.getCryptoFromCoinGecko("bitcoin");
+        APIResponse apiResponse = APIUtility.getCryptosFromFile();
+
         launch();
     }
 }
