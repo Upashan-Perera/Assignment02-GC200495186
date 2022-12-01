@@ -1,0 +1,6 @@
+.root{
+    -fx-font: bold italic 20pt "Roboto";
+    -fx-background-image: url("images/pexels-alesia-kozik-6765371.jpg");
+    -fx-background-size: cover;
+    -fx-background-radius: 20px;
+}

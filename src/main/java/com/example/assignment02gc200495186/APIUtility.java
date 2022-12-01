@@ -11,6 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class APIUtility {
 
@@ -20,7 +21,8 @@ public class APIUtility {
      * @throws IOException
      * @throws InterruptedException
      */
-    public static void getCryptoFromCoinGecko(String searchTerm) throws IOException, InterruptedException {
+
+    public static List<Crypto> getCryptoFromCoinGecko(String searchTerm) throws IOException, InterruptedException {
 
         //replacing all spaces in order to read correctly
         searchTerm = searchTerm.replaceAll(" ","%20");
@@ -32,9 +34,12 @@ public class APIUtility {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();
 
-        HttpResponse<Path> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofFile(Paths.get("cryptos.json")));
+        HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
+        Gson gson = new Gson();
+        APIResponse apiResponse = gson.fromJson(httpResponse.body(),APIResponse.class);
 
+        return apiResponse.getCoins();
     }
 
     /**
