@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +16,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CryptoViewController implements Initializable {
+
+    @FXML
+    private ImageView cryptoImageView;
 
     @FXML
     private ListView<Crypto> cryptoListView;
@@ -48,6 +53,7 @@ public class CryptoViewController implements Initializable {
             cryptoListView.setVisible(false);
             detailsButton.setVisible(false);
             msgLabel.setVisible(true);
+            cryptoImageView.setVisible(false);
             msgLabel.setText("No Results found");
         }
 
@@ -64,5 +70,18 @@ public class CryptoViewController implements Initializable {
         cryptoListView.setVisible(false);
         detailsButton.setVisible(false);
         msgLabel.setVisible(false);
+
+        cryptoListView.getSelectionModel().selectedItemProperty().addListener((obs,old,cryptoSelected)->{
+            if(cryptoSelected!=null){
+                try{
+                    cryptoImageView.setImage(new Image(cryptoSelected.getLarge()));
+                }
+                catch (IllegalArgumentException e) {
+                    cryptoImageView.setImage(new Image(Main.class.getResourceAsStream("images/Bitcoin.svg.png")));
+                }
+            }else {
+                cryptoImageView.setVisible(false);
+            }
+        });
     }
 }

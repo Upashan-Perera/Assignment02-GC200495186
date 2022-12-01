@@ -50,6 +50,6 @@ public class Crypto {
     }
 
     public String toString() {
-        return name + " - (" + symbol + ")";
+        return market_cap_rank + " - " + name + " - (" + symbol + ")";
     }
 }
