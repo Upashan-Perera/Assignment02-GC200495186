@@ -64,6 +64,13 @@ public class APIUtility {
         return apiResponse;
     }
 
+    /**
+     * This method will call the coingecko API with the cryptoID
+     * @param cryptoID
+     * @throws IOException
+     * @throws InterruptedException
+     */
+
     public static CryptoDetail getCryptoDetailFromCoinGecko(String cryptoID) throws IOException, InterruptedException {
         String uri = "https://api.coingecko.com/api/v3/coins/"+cryptoID;
 

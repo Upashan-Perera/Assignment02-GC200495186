@@ -42,6 +42,9 @@ public class CryptoDetailViewController implements Initializable, CryptoDetailIn
 
     @Override
     public void loadCryptoDetails(CryptoDetail cryptoDetail) {
+        /**
+         * Populating the results through cryptoDetails
+         */
         nameLabel.setText(cryptoDetail.getName());
         symbolLabel.setText(cryptoDetail.getSymbol());
         marketRankLabel.setText(cryptoDetail.getMarket_cap_rank());

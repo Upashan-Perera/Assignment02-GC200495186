@@ -14,6 +14,9 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("crypto-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("CryptoAPI!");
+        /**
+         * Populating the javafx scene icon
+         */
         stage.getIcons().add(new Image(Main.class.getResourceAsStream("images/Bitcoin.svg.png")));
         stage.setScene(scene);
         stage.show();

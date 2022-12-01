@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Crypto {
 
+    /**
+     * Intializing the variables from the JSON
+     */
     @SerializedName("id")
     private String id;
 
@@ -22,6 +25,10 @@ public class Crypto {
     private String thumb;
     private String large;
 
+    /**
+     * Intializing the Get methods
+     * @return
+     */
     public String getId() {
         return id;
     }

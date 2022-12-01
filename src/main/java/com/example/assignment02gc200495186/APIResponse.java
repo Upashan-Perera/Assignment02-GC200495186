@@ -10,10 +10,18 @@ public class APIResponse {
     @SerializedName("coins")
     private Crypto[] coins;
 
+    /**
+     * getting the returned results as an array
+     * @return
+     */
     public List<Crypto> getCoins() {
         return Arrays.asList(coins);
     }
 
+    /**
+     * Method to search whether the search result is zero
+     * @return
+     */
     boolean getResponse() {
 
         if(coins.length == 0){

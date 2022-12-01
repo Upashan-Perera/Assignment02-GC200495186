@@ -15,6 +15,9 @@ public class SceneChanger {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("cryptoDetail-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
+        /**
+         * Here we are using a custom intializable method to get the cryptoDetail value parsed from the controller
+         */
         CryptoDetailInitializable controller = fxmlLoader.getController();
         controller.loadCryptoDetails(cryptoDetail);
 
@@ -26,8 +29,14 @@ public class SceneChanger {
 
     }
 
+    /**
+     * This is the Scene changer class using to go back from the cryptoDetail view
+     * @param event
+     * @param fxmlFileName
+     * @throws IOException
+     */
     public static void changeScenes(ActionEvent event, String fxmlFileName) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("crypto-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlFileName));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

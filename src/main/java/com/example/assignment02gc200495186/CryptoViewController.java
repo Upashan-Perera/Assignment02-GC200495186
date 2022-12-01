@@ -63,16 +63,25 @@ public class CryptoViewController implements Initializable {
     void detailsButton(ActionEvent event) throws IOException, InterruptedException {
         Crypto cryptoSelected = cryptoListView.getSelectionModel().getSelectedItem();
         CryptoDetail cryptoDetail = APIUtility.getCryptoDetailFromCoinGecko(cryptoSelected.getId());
+        /**
+         * Changing the scene by using the Scene changer class
+         */
         SceneChanger.changeScenes(event,"cryptoDetails-view.fxml",cryptoDetail);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        /**
+         * making the list view and button disappear before user enters the search button
+         */
         cryptoListView.setVisible(false);
         detailsButton.setVisible(false);
         msgLabel.setVisible(false);
 
+        /**
+         * Populating the image corresponding to the crypto selected through the list view
+         */
         cryptoListView.getSelectionModel().selectedItemProperty().addListener((obs,old,cryptoSelected)->{
             if(cryptoSelected!=null){
                 try{
