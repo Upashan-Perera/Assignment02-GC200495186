@@ -15,7 +15,7 @@ public class SceneChanger {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("cryptoDetail-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
-        CryptoDetailViewController controller = fxmlLoader.getController();
+        CryptoDetailInitializable controller = fxmlLoader.getController();
         controller.loadCryptoDetails(cryptoDetail);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -26,4 +26,14 @@ public class SceneChanger {
 
     }
 
+    public static void changeScenes(ActionEvent event, String fxmlFileName) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("crypto-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("CryptoAPI!");
+        stage.getIcons().add(new Image(Main.class.getResourceAsStream("images/Bitcoin.svg.png")));
+        stage.setScene(scene);
+        stage.show();
+    }
 }
