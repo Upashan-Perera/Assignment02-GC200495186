@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -21,24 +22,47 @@ public class CryptoViewController implements Initializable {
     private Button detailsButton;
 
     @FXML
+    private Label msgLabel;
+
+    @FXML
     private Button searchButton;
 
     @FXML
+    private TextField searchTextField;
+
+    @FXML
     void search(ActionEvent event) throws IOException, InterruptedException {
+        cryptoListView.getItems().clear();
         String searchTerm = searchTextField.getText();
 
-        cryptoListView.getItems().addAll(APIUtility.getCryptoFromCoinGecko(searchTerm));
+        APIResponse apiResponse = APIUtility.getCryptoFromCoinGecko(searchTerm);
 
-        cryptoListView.setVisible(true);
+        if(apiResponse.getResponse()) {
+            cryptoListView.getItems().addAll(apiResponse.getCoins());
+
+            msgLabel.setVisible(false);
+            cryptoListView.setVisible(true);
+            detailsButton.setVisible(true);
+        }
+        else {
+            cryptoListView.setVisible(false);
+            detailsButton.setVisible(false);
+            msgLabel.setVisible(true);
+            msgLabel.setText("No Results found");
+        }
+
     }
 
     @FXML
-    private TextField searchTextField;
+    void detailsButton(ActionEvent event) {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         cryptoListView.setVisible(false);
         detailsButton.setVisible(false);
+        msgLabel.setVisible(false);
     }
 }

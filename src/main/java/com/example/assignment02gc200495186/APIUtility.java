@@ -22,13 +22,11 @@ public class APIUtility {
      * @throws InterruptedException
      */
 
-    public static List<Crypto> getCryptoFromCoinGecko(String searchTerm) throws IOException, InterruptedException {
+    public static APIResponse getCryptoFromCoinGecko(String searchTerm) throws IOException, InterruptedException {
 
         //replacing all spaces in order to read correctly
         searchTerm = searchTerm.replaceAll(" ","%20");
         String uri = "https://api.coingecko.com/api/v3/search?query=" + searchTerm;
-
-        //String uri = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" + searchTerm + "&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 
         //configure the environment to make a HTTP request
         HttpClient client = HttpClient.newHttpClient();
@@ -39,7 +37,7 @@ public class APIUtility {
         Gson gson = new Gson();
         APIResponse apiResponse = gson.fromJson(httpResponse.body(),APIResponse.class);
 
-        return apiResponse.getCoins();
+        return apiResponse ;
     }
 
     /**

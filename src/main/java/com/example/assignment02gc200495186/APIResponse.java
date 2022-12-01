@@ -13,4 +13,14 @@ public class APIResponse {
     public List<Crypto> getCoins() {
         return Arrays.asList(coins);
     }
+
+    boolean getResponse() {
+
+        if(coins.length == 0){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

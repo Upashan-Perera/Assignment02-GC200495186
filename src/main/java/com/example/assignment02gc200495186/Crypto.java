@@ -48,4 +48,8 @@ public class Crypto {
     public String getLarge() {
         return large;
     }
+
+    public String toString() {
+        return name + " - (" + symbol + ")";
+    }
 }
