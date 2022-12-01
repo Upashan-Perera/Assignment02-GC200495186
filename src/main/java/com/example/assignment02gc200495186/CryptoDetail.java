@@ -1,8 +1,12 @@
 package com.example.assignment02gc200495186;
 
 import com.google.gson.annotations.SerializedName;
+import javafx.scene.image.Image;
 
-public class Crypto {
+import java.util.Arrays;
+import java.util.List;
+
+public class CryptoDetail {
 
     @SerializedName("id")
     private String id;
@@ -10,17 +14,8 @@ public class Crypto {
     @SerializedName("name")
     private String name;
 
-    @SerializedName("api_symbol")
-    private String api_symbol;
-
     @SerializedName("symbol")
     private String symbol;
-
-    @SerializedName("market_cap_rank")
-    private String market_cap_rank;
-
-    private String thumb;
-    private String large;
 
     public String getId() {
         return id;
@@ -28,10 +23,6 @@ public class Crypto {
 
     public String getName() {
         return name;
-    }
-
-    public String getApi_symbol() {
-        return api_symbol;
     }
 
     public String getSymbol() {
@@ -42,15 +33,6 @@ public class Crypto {
         return market_cap_rank;
     }
 
-    public String getThumb() {
-        return thumb;
-    }
-
-    public String getLarge() {
-        return large;
-    }
-
-    public String toString() {
-        return market_cap_rank + " - " + name + " - (" + symbol + ")";
-    }
+    @SerializedName("market_cap_rank")
+    private String market_cap_rank;
 }

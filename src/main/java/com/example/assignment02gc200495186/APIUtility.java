@@ -63,4 +63,17 @@ public class APIUtility {
 
         return apiResponse;
     }
+
+    public static CryptoDetail getCryptoDetailFromCoinGecko(String cryptoID) throws IOException, InterruptedException {
+        String uri = "https://api.coingecko.com/api/v3/coins/"+cryptoID;
+
+        //configure the environment to make a HTTP request
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();
+
+        HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+        Gson gson = new Gson();
+        return gson.fromJson(httpResponse.body(),CryptoDetail.class);
+    }
 }

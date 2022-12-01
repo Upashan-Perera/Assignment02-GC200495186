@@ -9,3 +9,25 @@
     -fx-font: bold italic 12pt "Roboto";
     -fx-background-radius: 20px;
 }
+
+#gridPane{
+    -fx-background-color: #140d09;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+}
+
+#msgLabel{
+    -fx-text-fill: #e0820f;
+    -fx-font: bold 20pt "Forte";
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
+    -fx-background-radius: 20px;
+}
+
+.list-view {
+    -fx-background-radius: 20px;
+}

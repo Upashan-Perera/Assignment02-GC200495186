@@ -60,8 +60,10 @@ public class CryptoViewController implements Initializable {
     }
 
     @FXML
-    void detailsButton(ActionEvent event) {
-
+    void detailsButton(ActionEvent event) throws IOException, InterruptedException {
+        Crypto cryptoSelected = cryptoListView.getSelectionModel().getSelectedItem();
+        CryptoDetail cryptoDetail = APIUtility.getCryptoDetailFromCoinGecko(cryptoSelected.getId());
+        SceneChanger.changeScenes(event,"cryptoDetails-view.fxml",cryptoDetail);
     }
 
     @Override
